@@ -169,6 +169,12 @@ function initMap() {
     updateScanLocations(initialScanLocations);
     updateMap();
 
+	if(document.getElementById('coverage-checkbox').checked == false) {
+		scanLocations.forEach(function (scanLocation, key) {
+			scanLocation.marker.setVisible(false);
+		}, this);
+	}
+	
     if(is_logged_in()) {
         // on click listener for
         google.maps.event.addListener(map, 'click', function(event) {
